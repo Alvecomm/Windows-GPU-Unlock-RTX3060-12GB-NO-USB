@@ -43,6 +43,19 @@ EFI partition chosen with F11) instead of a USB stick, on one specific machine:
 > any other motherboard, BIOS or card are **untested**. It writes to the GPU at boot;
 > use at your own risk. The profile is exact-match: other hardware is refused, not supported.
 
+## Other cards and setups
+
+Everything from upstream [Windows-GPU-UNLOCK](https://github.com/windows-GPU-UNLOCK/Windows-GPU-UNLOCK)
+is still here and works exactly as upstream: all its reviewed profiles (e.g. RTX 3090, 3090 Ti,
+3070 Ti, the USB RTX 3060 profiles) and its LOCAL profile pipeline for other machines, using the
+upstream USB or internal routes. Follow [UPSTREAM-README.md](UPSTREAM-README.md) and the [docs](docs/)
+for those; this fork did not change any of them.
+
+What this fork adds is the **no-USB internal-SSD route for a new machine**, hardware-verified only on
+the MSI B850 + RTX 3060 above. Other cards/boards can try the same route through their own read-only
+probe captures and the same safety gates ([guide](docs/STEP-BY-STEP-MSI-B850-RTX3060.md)), but that is
+untested: the gates refuse anything they cannot verify.
+
 ## Results on the tested machine
 
 Same benchmark binary, same driver and settings ([evidence](research/msi-b850-rtx3060/evidence/20261122-benchmark/README.md)):
@@ -106,11 +119,10 @@ not redistributable; you generate the five firmware assets yourself
   A: The upstream Windows project boots the unlock from a USB stick. This fork boots the same
   code from a separate 1 GiB EFI partition on your internal SSD, picked once with F11.
   Your Windows EFI partition and Windows Boot Manager are never modified.
-- **Q: Does it work on my PC?**  
-  A: Only the exact machine in the table above is tested. The tools check board, BIOS, CPU,
-  GPU IDs, the GPU's firmware image and driver build, and refuse anything else. Other RTX 3060
-  machines need their own read-only probe captures and profile; the
-  [step-by-step guide](docs/STEP-BY-STEP-MSI-B850-RTX3060.md) shows that process.
+- **Q: Does it work on my PC / other cards?**  
+  A: The upstream cards and profiles work as upstream (see [Other cards and setups](#other-cards-and-setups)).
+  The no-USB internal-SSD route is tested only on the machine above; other machines need their own
+  read-only probe captures and profile, and every check refuses what it cannot verify.
 - **Q: Does this flash my VBIOS or patch the NVIDIA driver?**  
   A: No. It changes the GPU's running state once per cold boot, before Windows loads. No VBIOS
   flash, no patched driver, nothing to redo after NVIDIA driver updates. A full shutdown resets it.
