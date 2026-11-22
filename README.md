@@ -177,6 +177,20 @@ Changes made in this fork are listed in [CHANGES.md](CHANGES.md).
 GPL-2.0-only, the same as the upstream projects ([LICENSE](LICENSE)). Third-party parts keep their own
 licenses as listed above. No warranty.
 
+## Legal Disclaimer
+
+This project is an independent, community-driven open-source hardware research project.
+
+It is not affiliated with, endorsed by, sponsored by, or associated with NVIDIA Corporation.
+
+NVIDIA, GeForce, and RTX are trademarks of NVIDIA Corporation.
+
+This project is provided free of charge under its applicable open-source license. Donations are entirely voluntary and do not grant additional functionality or privileges.
+
+The software is provided "AS IS", without warranties of any kind. Users are responsible for understanding the risks of modifying their GPU's runtime configuration and for complying with applicable laws and software license agreements.
+
+No proprietary NVIDIA firmware, BIOS images, or NVIDIA driver binaries are distributed as part of this project.
+
 ---
 
 ## About Alvecomm
