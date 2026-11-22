@@ -1,4 +1,32 @@
-# GPU Unlock: internal-SSD boot for MSI B850 + RTX 3060 (experimental)
+<p align="center">
+  <a href="https://alvecomm.com">
+    <img src="./assets/brand/logo.svg" alt="Alvecomm logo" width="120">
+  </a>
+</p>
+
+<h1 align="center">Windows GPU Unlock: RTX 3060 12 GB, no USB</h1>
+
+<p align="center">
+  <strong>
+    Unlock full-rate RTX 3060 tensor performance on Windows from a dedicated EFI partition on your internal SSD. No USB stick.
+  </strong>
+</p>
+
+<p align="center">
+  <a href="docs/STEP-BY-STEP-MSI-B850-RTX3060.md">Step-by-step guide</a>
+  ·
+  <a href="#results-on-the-tested-machine">Results</a>
+  ·
+  <a href="#faq">FAQ</a>
+  ·
+  <a href="#support-us">Support us</a>
+  ·
+  <a href="https://github.com/sponsors/Alvecomm">Sponsor</a>
+  ·
+  <a href="https://alvecomm.com">Website</a>
+</p>
+
+---
 
 This fork runs the Ampere GPU unlock from the **internal SSD** (a separate, dedicated
 EFI partition chosen with F11) instead of a USB stick, on one specific machine:
@@ -15,7 +43,7 @@ EFI partition chosen with F11) instead of a USB stick, on one specific machine:
 > any other motherboard, BIOS or card are **untested**. It writes to the GPU at boot;
 > use at your own risk. The profile is exact-match: other hardware is refused, not supported.
 
-## Result on the tested machine
+## Results on the tested machine
 
 Same benchmark binary, same driver and settings ([evidence](research/msi-b850-rtx3060/evidence/20261122-benchmark/README.md)):
 
@@ -68,6 +96,55 @@ Every disk/boot step is a command you run yourself after reading it.
 not redistributable; you generate the five firmware assets yourself
 (see [docs/ASSETS.en.md](docs/ASSETS.en.md)) and the tools verify their SHA256 hashes.
 
+## FAQ
+
+- **Q: What does this actually unlock?**  
+  A: NVIDIA runs GeForce tensor cores at half rate for FP16, BF16 and TF32 math with FP32
+  accumulation (what most AI training and unquantized inference uses). The unlock removes that
+  cap at boot. On the tested RTX 3060 that is ≈1.84–1.93× for those modes; FP32 is unchanged.
+- **Q: Why "no USB"?**  
+  A: The upstream Windows project boots the unlock from a USB stick. This fork boots the same
+  code from a separate 1 GiB EFI partition on your internal SSD, picked once with F11.
+  Your Windows EFI partition and Windows Boot Manager are never modified.
+- **Q: Does it work on my PC?**  
+  A: Only the exact machine in the table above is tested. The tools check board, BIOS, CPU,
+  GPU IDs, the GPU's firmware image and driver build, and refuse anything else. Other RTX 3060
+  machines need their own read-only probe captures and profile; the
+  [step-by-step guide](docs/STEP-BY-STEP-MSI-B850-RTX3060.md) shows that process.
+- **Q: Does this flash my VBIOS or patch the NVIDIA driver?**  
+  A: No. It changes the GPU's running state once per cold boot, before Windows loads. No VBIOS
+  flash, no patched driver, nothing to redo after NVIDIA driver updates. A full shutdown resets it.
+- **Q: Does it survive a restart?**  
+  A: Plan on choosing the F11 entry after each full shutdown. A non-cold GPU is detected and
+  skipped safely (Windows starts unchanged).
+- **Q: Does this hurt my GPU?**  
+  A: It is unlikely: it removes a market-segmentation limit, it does not raise voltage, clocks or
+  the power limit, and the card's own thermal and power management stays fully active. The card
+  can use more power in tensor-heavy work because it does more work. The included array test
+  stays within stock limits and stops itself at set temperature/power thresholds.
+- **Q: What if it goes wrong?**  
+  A: If Windows doesn't come back: hold power 5 s, switch the PSU off for 10 s, power on,
+  F11 → Windows Boot Manager. Full rollback steps are in the guide.
+- **Q: Can I make it automatic?**  
+  A: Not yet recommended. It has been tested in supervised runs only; keep it a manual F11 choice.
+- **Q: Why does BitLocker / Secure Boot need to be off?**  
+  A: The unlock EFI is unsigned, and BitLocker would ask for recovery after boot-path changes.
+- **Q: How can I help?**  
+  A: Report results (with logs, no personal data) in Issues, or [support us](#support-us).
+
+## Support us
+
+This project is free and open source, and stays that way.
+
+If it saves you time or money on GPU compute, consider supporting its ongoing development via
+GitHub Sponsors. Even **$1/month** helps keep it maintained, tested on more hardware, and available to everyone.
+
+👉 https://github.com/sponsors/Alvecomm
+
+Other ways to help: star the repository, share it, report your results, and open issues with
+feedback. Please also consider supporting the upstream authors listed under [Credits](#credits),
+whose work this builds on. See [SUPPORT.md](SUPPORT.md).
+
 ## Credits
 
 This is a derivative of, and would not exist without:
@@ -87,3 +164,10 @@ Changes made in this fork are listed in [CHANGES.md](CHANGES.md).
 
 GPL-2.0-only, the same as the upstream projects ([LICENSE](LICENSE)). Third-party parts keep their own
 licenses as listed above. No warranty.
+
+---
+
+## About Alvecomm
+
+Alvecomm builds tools and systems at the intersection of software engineering, automation,
+and AI-assisted workflows. Learn more at https://alvecomm.com
