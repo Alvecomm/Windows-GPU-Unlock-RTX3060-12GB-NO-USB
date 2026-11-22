@@ -1,0 +1,43 @@
+{
+  "_comment": "Expected identity of ONE machine (MSI B850 GAMING PLUS WIFI6E / RTX 3060 GA106). This file is not a hardware profile and grants nothing: it only lets msi_b850_gate.py refuse inventories and generated LOCAL profiles that describe a different machine. Every value below 'reported_by_owner' was supplied by the machine owner from Windows; every null value is unknown until read-only probe captures exist. Never fill a null from another machine.",
+  "format": 1,
+  "id": "msi-b850-gaming-plus-wifi6e-rtx3060-ga106",
+  "status": "experimental-unvalidated",
+  "reported_by_owner": {
+    "board_product_contains": "B850 GAMING PLUS WIFI6E",
+    "board_id": "MS-7E80",
+    "bios_vendor": "American Megatrends International",
+    "bios_version": "1.A20",
+    "bios_date": "2025-07-11",
+    "cpu_name_contains": "Ryzen 7 9700X",
+    "rtx": {"vendor": "10de", "device": "2504", "subsystem_vendor": "1462", "subsystem_device": "397d"},
+    "igpu": {"vendor": "1002", "device": "13c0", "subsystem_vendor": "1462", "subsystem_device": "ee80"},
+    "windows": {"edition": "Windows 11 Pro", "build": "26300", "boot_mode": "UEFI", "secure_boot": "disabled"},
+    "storage": {"windows_esp_mib": 200, "partition_style": "GPT"}
+  },
+  "derived_from_owner_values": {
+    "_comment": "Mechanical encodings of the owner's PCI IDs in the form generated headers use (device<<16 | vendor).",
+    "gu_board_id": "0x250410deU",
+    "gu_board_subsystem": "0x397d1462U",
+    "igpu_capture_id": "13c01002"
+  },
+  "repository_reviewed_traits": {
+    "_comment": "Taken from internal-boot/unlock/gpu-family.h and research/profile/proven.json; the gate re-reads proven.json instead of trusting this copy.",
+    "family": "GA106",
+    "chip_id": "0xb76000a1U",
+    "device_memory_mib_hex": "0x3000U"
+  },
+  "unknown_until_probe": [
+    "PCI segment/bus and complete root-port ancestry of the RTX",
+    "BAR0 base/extent and descriptor type",
+    "PROM SHA-256 and FWSEC-FRTS offset/size",
+    "NVIDIA GOP (nvgop) version and .text SHA-256 in this card's VBIOS",
+    "AMI console text/graphics driver fingerprints in BIOS 1.A20",
+    "whether an EDID driver is bound (GU_NO_EDID_DRIVER)",
+    "console topology: aggregate or direct, number of RTX display children",
+    "whether the AMD iGPU publishes a physical GOP in this BIOS configuration",
+    "PciIo attribute cache versus PCI command register (CapturePermit)",
+    "cold-state selectors (SS0/SS1, WPR2) at power-on",
+    "whether MSI firmware keeps and boots an NVRAM entry that points at a second ESP"
+  ]
+}

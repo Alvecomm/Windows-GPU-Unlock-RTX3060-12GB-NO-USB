@@ -1,0 +1,26 @@
+﻿[
+    {
+        "Name":  "fp32_pedantic",
+        "MedianTflops":  8.0801270000000009,
+        "MinTflops":  8.078341,
+        "MaxTflops":  8.114015
+    },
+    {
+        "Name":  "fp16_tensor_fp32_accumulate",
+        "MedianTflops":  25.991038,
+        "MinTflops":  25.796606,
+        "MaxTflops":  25.992848000000002
+    },
+    {
+        "Name":  "bf16_tensor_fp32_accumulate",
+        "MedianTflops":  25.900758999999997,
+        "MinTflops":  25.723834999999998,
+        "MaxTflops":  25.913808
+    },
+    {
+        "Name":  "tf32_tensor_fp32_accumulate",
+        "MedianTflops":  13.120012000000001,
+        "MinTflops":  13.017024,
+        "MaxTflops":  13.121295
+    }
+]
