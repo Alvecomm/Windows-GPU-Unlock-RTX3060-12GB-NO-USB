@@ -43,3 +43,10 @@ benchmark/rtx3080/downloads/
 benchmark/rtx3080/results/
 benchmark/rtx3080/build-manifest.json*
 benchmark/rtx3080/packages-manifest.json*
+# Owner-local outputs that must never be published (logs, captures, ESP/BCD details).
+/unlock-logs/
+/gpu-array-test/
+/benchmark-3060/
+research/msi-b850-rtx3060/*.local.json
+research/msi-b850-rtx3060/esp-config*.json
+research/msi-b850-rtx3060/inventory*.json

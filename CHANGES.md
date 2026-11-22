@@ -1,5 +1,21 @@
 # Changes
 
+## 2026-11-22 — Alvecomm fork: MSI B850 / RTX 3060 internal-ESP experiment
+
+Changes made in this fork on top of upstream commit `88961cc`:
+
+- Added `research/msi-b850-rtx3060/`: offline identity gate, read-only ESP inspector,
+  build wrapper for the internal (no USB) probe/unlock images, host tests, a GPU array
+  test with a watchdog, and benchmark evidence from one supervised hardware run.
+- Added `MSI-B850-RTX3060-INTERNAL-BOOT-PLAN.md` (audit, plan and recovery strategy).
+- Modified `benchmark/build.ps1`, `run-benchmark.ps1`, `test-runner.ps1`,
+  `compare_results.py`, `test_compare_results.py`: added an exact `-Card 3060` target;
+  added `benchmark/compute-benchmark-3060.cu` (same workload, selects only
+  "NVIDIA GeForce RTX 3060").
+- Removed `distributions/` (prebuilt collector ZIP); build from source instead.
+- Moved the upstream README to `UPSTREAM-README.md`; new `README.md` for this fork.
+- No existing hardware profile, safety gate or check was changed or weakened.
+
 ## Unreleased — benchmark accepts the GPU on any PCI bus
 
 - Completes the benchmark bus change deferred in b18dd91. The native benchmarks still

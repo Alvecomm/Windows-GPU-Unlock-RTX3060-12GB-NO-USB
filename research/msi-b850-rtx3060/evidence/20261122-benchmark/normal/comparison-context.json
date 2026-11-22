@@ -1,0 +1,68 @@
+﻿{
+    "schema_version":  2,
+    "benchmark_names":  [
+                            "fp32_pedantic",
+                            "fp16_tensor_fp32_accumulate",
+                            "bf16_tensor_fp32_accumulate",
+                            "tf32_tensor_fp32_accumulate"
+                        ],
+    "artifacts":  [
+                      {
+                          "Path":  "compute-benchmark-3060.cu",
+                          "Bytes":  6029,
+                          "SHA256":  "2A2EE318897038903EFB2623862D772A5695C0F15B1476D31FE7E88DDAC829A3"
+                      },
+                      {
+                          "Path":  "upstream-compute-benchmark.cu",
+                          "Bytes":  4438,
+                          "SHA256":  "57B04FA8599CE298D58237246B4353E72000CE65D3D75BD406E97D1D26EC0FD2"
+                      },
+                      {
+                          "Path":  "bin\\compute-benchmark-3060.exe",
+                          "Bytes":  345600,
+                          "SHA256":  "7F541F8D68138EFFE66D2A3AD872F15A1502DFD7F7A59A5B8D1A537EDDD39D90"
+                      },
+                      {
+                          "Path":  "bin\\compute-benchmark-3060.exp",
+                          "Bytes":  916,
+                          "SHA256":  "AFC87C97754F2776613D347CDF26EE6CE7FBF4ADA1F05DEE4BA079A1AD9822AE"
+                      },
+                      {
+                          "Path":  "bin\\compute-benchmark-3060.lib",
+                          "Bytes":  1992,
+                          "SHA256":  "640C45736A7C50EA514F26D50471B9762BE7364CAA013ED60867B398141ACA21"
+                      },
+                      {
+                          "Path":  "bin\\cublas64_12.dll",
+                          "Bytes":  100796416,
+                          "SHA256":  "E26C6A52B7DF762633978B282D6F172D0085719B116FF1A8CA4C96FF5786E142"
+                      },
+                      {
+                          "Path":  "bin\\cublasLt64_12.dll",
+                          "Bytes":  494290944,
+                          "SHA256":  "0FA3AABF2E90F0BA3D331699B95305EE29FE1CDA0F4D4B64C883E04F01A35B49"
+                      },
+                      {
+                          "Path":  "bin\\nvblas64_12.dll",
+                          "Bytes":  331776,
+                          "SHA256":  "305807FB9AD83E7A900B6BFBD07ADB587C678CF28BD6A8F2CE0FF64338ED7B01"
+                      }
+                  ],
+    "runtime":  {
+                    "benchmark_protocol":  2,
+                    "tf32_allowed":  true,
+                    "cuda_runtime":  12060,
+                    "cublas_major":  12,
+                    "cublas_minor":  6,
+                    "cublas_patch":  0,
+                    "gpu_workload_run":  false
+                },
+    "gpu_settings":  [
+                         "NVIDIA GeForce RTX 3060",
+                         "00000000:01:00.0",
+                         "621.24",
+                         "170.00",
+                         "2130",
+                         "7501"
+                     ]
+}

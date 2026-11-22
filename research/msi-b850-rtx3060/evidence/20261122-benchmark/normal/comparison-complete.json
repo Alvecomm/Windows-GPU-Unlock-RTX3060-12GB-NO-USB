@@ -1,0 +1,21 @@
+﻿{
+    "schema_version":  1,
+    "files":  [
+                  {
+                      "Path":  "comparison-context.json",
+                      "SHA256":  "E0A649DEC8D7DD2E454F720FAE95DEAA6593AE3796A6BF1766E0338CA213C292"
+                  },
+                  {
+                      "Path":  "trial-1.json",
+                      "SHA256":  "E652771070D50319F39831ADD014F014774A172A44EE1CBB6E9023CDD4FF2EDB"
+                  },
+                  {
+                      "Path":  "trial-2.json",
+                      "SHA256":  "017572E8E46FB47232DE2D14E4B61A6782FF22A8A870CB6E91C484148D408E0F"
+                  },
+                  {
+                      "Path":  "trial-3.json",
+                      "SHA256":  "3AC532DFA457AF8BA9AC159F5CA0C207E962E83BD1C93F4FCF1B1ECC0DB767CA"
+                  }
+              ]
+}
