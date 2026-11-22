@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://alvecomm.com">
-    <img src="./assets/brand/logo.svg" alt="Alvecomm logo" width="120">
+    <img src="./docs/brand/logo.svg" alt="Alvecomm logo" width="120">
   </a>
 </p>
 
